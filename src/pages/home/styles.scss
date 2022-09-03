@@ -1,0 +1,18 @@
+.countries {
+  padding-block: 64px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 64px;
+  align-content: center;
+  justify-content: center;
+}
+
+.filters {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 32px;
+}
