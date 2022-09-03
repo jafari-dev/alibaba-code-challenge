@@ -1,0 +1,31 @@
+.search {
+  outline: none;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 4px #cccccc;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  input {
+    outline: none;
+    padding: 12px 8px;
+    border: none;
+    width: 272px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Nunito Sans", sans-serif;
+
+    &::placeholder {
+      color: #aaaaaa;
+    }
+  }
+
+  svg {
+    margin-left: 8px;
+    width: 24px;
+    max-width: 24px;
+    height: 24px;
+  }
+}
