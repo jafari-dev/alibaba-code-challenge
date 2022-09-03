@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CountryCard component matches the snapshots. 1`] = `
+<div>
+  <div
+    class="country-card"
+  >
+    <img
+      alt="Flag of Iraq"
+      src="https://loremflickr.com/640/480"
+    />
+    <h3
+      data-testid="name"
+    >
+      Iraq
+    </h3>
+    <h4>
+      <span>
+        Population:
+      </span>
+      <span
+        data-testid="population"
+      >
+        186524961
+      </span>
+    </h4>
+    <h4>
+      <span>
+        Region:
+      </span>
+      <span
+        data-testid="region"
+      >
+        North
+      </span>
+    </h4>
+    <h4>
+      <span>
+        Capital:
+      </span>
+      <span
+        data-testid="capital"
+      >
+        Potomac
+      </span>
+    </h4>
+  </div>
+</div>
+`;
