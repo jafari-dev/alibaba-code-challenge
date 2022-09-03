@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const URL = "https://restcountries.com/v3.1/all";
+      const URL = "https://restcountries.com/v2/all";
 
       try {
         const response = fetch(URL);
@@ -34,7 +34,7 @@ function App() {
       const areRegionsMatched = allRegionsFilters.includes(selectedRegion)
         ? true
         : country.region === selectedRegion;
-      const areNameAndSearchMatched = country.name.common.toUpperCase()
+      const areNameAndSearchMatched = country.name.toUpperCase()
         .includes(searchedValue.toUpperCase());
 
       if (areRegionsMatched && areNameAndSearchMatched) return true;
@@ -56,12 +56,12 @@ function App() {
       <section className="countries">
         {shownCountries.map((country) => (
           <CountryCard
-            key={country.name.common}
-            name={country.name.common}
+            key={country.name}
+            name={country.name}
             capital={country.capital}
             population={country.population}
             region={country.region}
-            flagUrl={country.flags.svg}
+            flagUrl={country.flag}
           />
         ))}
       </section>
