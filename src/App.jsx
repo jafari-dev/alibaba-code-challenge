@@ -1,7 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
-import { CountryCard, Header } from "./components";
+import "./App.scss";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { CountryCard, Header, Search, SelectBox } from "./components";
 
 function App() {
+  const [searchedValue, setSearchedValue] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
   const [countries, setCountries] = useState([]);
   const [isDarkThemeOn, setIsDarkThemeOn] = useState(false);
   const toggleTheme = useCallback(() => {
@@ -25,14 +28,33 @@ function App() {
     fetchData();
   }, []);
 
+  const shownCountries = useMemo(() => {
+    return countries.filter((country) => {
+      const allRegionsFilters = ["", "All"];
+      const areRegionsMatched = allRegionsFilters.includes(selectedRegion)
+        ? true
+        : country.region === selectedRegion;
+      const areNameAndSearchMatched = country.name.common.toUpperCase()
+        .includes(searchedValue.toUpperCase());
+
+      if (areRegionsMatched && areNameAndSearchMatched) return true;
+      else return false;
+    });
+  }, [countries, searchedValue, selectedRegion]);
+
   return (
     <div className="container">
-      <Header
-        isDarkThemeOn={isDarkThemeOn}
-        onToggleTheme={toggleTheme}
-      />
+      <Header isDarkThemeOn={isDarkThemeOn} onToggleTheme={toggleTheme} />
+      <nav className="filters">
+        <Search searchValue={searchedValue} onChange={setSearchedValue} />
+        <SelectBox
+          options={["All", "Africa", "America", "Asia", "Europe", "Oceania"]}
+          onChange={setSelectedRegion}
+          placeholder="Region"
+        />
+      </nav>
       <section className="countries">
-        {countries.map((country) => (
+        {shownCountries.map((country) => (
           <CountryCard
             key={country.name.common}
             name={country.name.common}
