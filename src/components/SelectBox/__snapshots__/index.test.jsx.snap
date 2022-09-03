@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectBox component matches the snapshots. 1`] = `
+<div>
+  <select
+    class="selectbox"
+    data-testid="selectbox"
+    name="select"
+  >
+    <option
+      data-testid="option"
+      disabled=""
+      selected=""
+      value=""
+    >
+      group
+    </option>
+    <option
+      data-testid="option"
+      value="remove"
+    >
+      remove
+    </option>
+    <option
+      data-testid="option"
+      value="yuck"
+    >
+      yuck
+    </option>
+    <option
+      data-testid="option"
+      value="Kansas"
+    >
+      Kansas
+    </option>
+    <option
+      data-testid="option"
+      value="cloak"
+    >
+      cloak
+    </option>
+    <option
+      data-testid="option"
+      value="Electronic"
+    >
+      Electronic
+    </option>
+    <option
+      data-testid="option"
+      value="collaboration"
+    >
+      collaboration
+    </option>
+  </select>
+</div>
+`;
