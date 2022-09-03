@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component matches the snapshots. 1`] = `
+<div>
+  <div
+    class="search"
+  >
+    <svg>
+      search.svg
+    </svg>
+    <input
+      placeholder="Search for a country ..."
+      value="remove yuck"
+    />
+  </div>
+</div>
+`;
