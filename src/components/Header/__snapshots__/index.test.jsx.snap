@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component matches the snapshots. 1`] = `
+<div>
+  <header
+    class="header"
+  >
+    <h1>
+      Where in the world?
+    </h1>
+    <div
+      data-testid="theme-switcher"
+    >
+      <svg
+        data-testid="theme-icon"
+      >
+        sun.svg
+      </svg>
+      <span
+        data-testid="theme-title"
+      >
+        Light Mode
+      </span>
+    </div>
+  </header>
+  <header
+    class="header"
+  >
+    <h1>
+      Where in the world?
+    </h1>
+    <div
+      data-testid="theme-switcher"
+    >
+      <svg
+        data-testid="theme-icon"
+      >
+        moon.svg
+      </svg>
+      <span
+        data-testid="theme-title"
+      >
+        Dark Mode
+      </span>
+    </div>
+  </header>
+</div>
+`;

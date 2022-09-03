@@ -62,4 +62,4 @@ string as its alt attribute.`, () => {
     expect(getByRole("img")).toHaveAttribute("src", flagUrl);
     expect(getByRole("img")).toHaveAttribute("alt", `Flag of ${name}`);
   });
-})
+});
