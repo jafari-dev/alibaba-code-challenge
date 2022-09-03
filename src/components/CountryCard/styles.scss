@@ -12,18 +12,18 @@
     border-top-right-radius: 8px;
   }
 
-  h3, h4 {
-    margin-inline: 16px;
-  }
-
   h3 {
     font-weight: 800;
-    margin-top: 12px;
+    margin-top: 8px;
     margin-bottom: 16px;
     font-size: 18px;
+    padding: 4px;
+    margin-inline: 12px;
+    display: inline-block;
   }
 
   h4 {
+    margin-inline: 16px;
     font-weight: 600;
     font-size: 14px;
     margin-block: 4px;

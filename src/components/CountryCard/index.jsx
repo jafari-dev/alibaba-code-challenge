@@ -1,11 +1,14 @@
 import { memo } from "react";
+import { Link } from "react-router-dom";
 import "./styles.scss";
 
 function CountryCard({name, flagUrl, population, region, capital}) {
   return (
     <div className="country-card">
       <img src={flagUrl} alt={`Flag of ${name}`} />
-      <h3 data-testid="name">{name}</h3>
+      <Link to={`/countries/${name.toLowerCase()}`}>
+        <h3 data-testid="name">{name}</h3>
+      </Link>
       <h4>
         <span>Population:</span>
         <span data-testid="population">{population}</span>
