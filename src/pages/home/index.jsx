@@ -1,31 +1,10 @@
 import "./styles.scss";
 import { useMemo, useState, memo, useEffect } from "react";
-import { CountryCard, Search, SelectBox, SortBox } from "../../components";
-import { areStringsMatched, orderObjectsByProperty } from "../../utils/helpers";
+import { CountryCard, Search, SelectBox } from "../../components";
+import { areStringsMatched, reorderCountriesByFilter } from "../../utils";
+import { ORDER_FILTER_OPTIONS, REGION_FILTER_OPTIONS } from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
 
-const REGION_FILTER_OPTIONS = [
-  "All",
-  "Africa",
-  "Americas",
-  "Asia",
-  "Europe",
-  "Oceania",
-];
-
-const ORDER_FILTERS = {
-  name: {
-    ASC: "Country name (Asc)",
-    DES: "Country name (Des)"
-  },
-  population: {
-    ASC: "Population (Asc)",
-    DES: "Population (Des)"
-  }
-}
-
-const ORDER_FILTER_LABELS = Object.values(ORDER_FILTERS)
-  .map((value) => Object.values(value)).flat();
 
 function Home({ countries }) {
   const navigate = useNavigate();
@@ -39,32 +18,25 @@ function Home({ countries }) {
       : "";
 
     const country = searchedValue ? `search=${searchedValue}` : "";
-    const filters = region === "" || country === ""
-      ? region + country
-      : region + "&" + country;
+    const filters =
+      region === "" || country === ""
+        ? region + country
+        : region + "&" + country;
 
     navigate(`${filters ? `?${filters}` : ""}`, { replace: true });
   }, [searchedValue, selectedRegion]);
 
   const shownCountries = useMemo(() => {
-    let orderedCountries = orderBy === ORDER_FILTERS.name.ASC
-      ? orderObjectsByProperty(countries, "name", "ASC")
-      : orderBy === ORDER_FILTERS.name.DES
-        ? orderObjectsByProperty(countries, "name", "DES")
-        : orderBy === ORDER_FILTERS.population.ASC
-          ? orderObjectsByProperty(countries, "population", "ASC")
-          : orderBy === ORDER_FILTERS.population.DES
-            ? orderObjectsByProperty(countries, "population", "DES")
-            : orderObjectsByProperty(countries, "");
-    
+    const orderedCountries = reorderCountriesByFilter(countries, orderBy);
 
     return orderedCountries.filter((country) => {
       if (
         (["", "All"].includes(selectedRegion) ||
-        country.region === selectedRegion) &&
+          country.region === selectedRegion) &&
         areStringsMatched(country.name, searchedValue)
-      ) return true;
-      
+      )
+        return true;
+
       return false;
     });
   }, [countries, searchedValue, selectedRegion, orderBy]);
@@ -74,7 +46,7 @@ function Home({ countries }) {
       <nav className="filters">
         <Search searchValue={searchedValue} onChange={setSearchedValue} />
         <SelectBox
-          options={ORDER_FILTER_LABELS}
+          options={ORDER_FILTER_OPTIONS}
           onChange={setOrderBy}
           placeholder="Order by ..."
         />

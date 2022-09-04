@@ -39,5 +39,8 @@
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
     "sass": "^1.54.8"
+  },
+  "jest": {
+    "testMatch": ["**/index.test.jsx"]
   }
 }

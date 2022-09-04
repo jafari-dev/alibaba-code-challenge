@@ -7,13 +7,18 @@ exports[`CountryCard component matches the snapshots. 1`] = `
   >
     <img
       alt="Flag of Iraq"
+      loading="lazy"
       src="https://loremflickr.com/640/480"
     />
-    <h3
-      data-testid="name"
+    <a
+      href="/countries/iraq"
     >
-      Iraq
-    </h3>
+      <h3
+        data-testid="name"
+      >
+        Iraq
+      </h3>
+    </a>
     <h4>
       <span>
         Population:
