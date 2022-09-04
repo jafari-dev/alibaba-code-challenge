@@ -22,7 +22,9 @@
 }
 
 .content {
+  margin-inline: auto;
   margin-top: 64px;
+  text-align: center;
 
   img {
     vertical-align: top;
@@ -31,10 +33,19 @@
     height: 300px;
     display: inline-block;
   }
+
+  @media screen and (max-width: 376px) {
+    img {
+      width: 240px;
+      height: 160px;
+      margin-inline: auto;
+    }
+  }
 }
 
 
 .details {
+  text-align: left;
   max-width: 600px;
   margin-left: 48px;
   display: inline-block;

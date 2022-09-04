@@ -7,12 +7,13 @@
   background-color: var(--secondary-background-color);
 
   header {
+    padding-inline: 0.5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-block: 8px;
-    max-width: 1200px;
+    max-width: 1440px;
     margin-inline: auto;
   }
 

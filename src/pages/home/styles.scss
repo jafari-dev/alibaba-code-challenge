@@ -2,9 +2,22 @@
   padding-block: 64px;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  gap: 64px;
   align-content: center;
-  justify-content: center;
+  justify-content: space-between;
+  row-gap: 48px;
+
+  @media screen and (max-width: 1096px) {
+    grid-template-columns: auto auto auto;
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: auto auto;
+  }
+
+  @media screen and (max-width: 376px) {
+    justify-content: center;
+    grid-template-columns: auto;
+  }
 }
 
 .filters {
