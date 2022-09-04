@@ -1,7 +1,7 @@
 import "./styles.scss";
 import { useMemo, useState, memo, useEffect } from "react";
-import { CountryCard, Search, SelectBox } from "../../components";
-import { areStringsMatched } from "../../utils/helpers";
+import { CountryCard, Search, SelectBox, SortBox } from "../../components";
+import { areStringsMatched, orderObjectsByProperty } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 
 const REGION_FILTER_OPTIONS = [
@@ -13,13 +13,28 @@ const REGION_FILTER_OPTIONS = [
   "Oceania",
 ];
 
+const ORDER_FILTERS = {
+  name: {
+    ASC: "Country name (Asc)",
+    DES: "Country name (Des)"
+  },
+  population: {
+    ASC: "Population (Asc)",
+    DES: "Population (Des)"
+  }
+}
+
+const ORDER_FILTER_LABELS = Object.values(ORDER_FILTERS)
+  .map((value) => Object.values(value)).flat();
+
 function Home({ countries }) {
   const navigate = useNavigate();
+  const [orderBy, setOrderBy] = useState("");
   const [searchedValue, setSearchedValue] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
 
   useEffect(() => {
-    const region =selectedRegion
+    const region = selectedRegion
       ? `region=${selectedRegion ? selectedRegion : "All"}`
       : "";
 
@@ -32,7 +47,18 @@ function Home({ countries }) {
   }, [searchedValue, selectedRegion]);
 
   const shownCountries = useMemo(() => {
-    return countries.filter((country) => {
+    let orderedCountries = orderBy === ORDER_FILTERS.name.ASC
+      ? orderObjectsByProperty(countries, "name", "ASC")
+      : orderBy === ORDER_FILTERS.name.DES
+        ? orderObjectsByProperty(countries, "name", "DES")
+        : orderBy === ORDER_FILTERS.population.ASC
+          ? orderObjectsByProperty(countries, "population", "ASC")
+          : orderBy === ORDER_FILTERS.population.DES
+            ? orderObjectsByProperty(countries, "population", "DES")
+            : orderObjectsByProperty(countries, "");
+    
+
+    return orderedCountries.filter((country) => {
       if (
         (["", "All"].includes(selectedRegion) ||
         country.region === selectedRegion) &&
@@ -41,12 +67,17 @@ function Home({ countries }) {
       
       return false;
     });
-  }, [countries, searchedValue, selectedRegion]);
+  }, [countries, searchedValue, selectedRegion, orderBy]);
 
   return (
     <>
       <nav className="filters">
         <Search searchValue={searchedValue} onChange={setSearchedValue} />
+        <SelectBox
+          options={ORDER_FILTER_LABELS}
+          onChange={setOrderBy}
+          placeholder="Order by ..."
+        />
         <SelectBox
           options={REGION_FILTER_OPTIONS}
           onChange={setSelectedRegion}

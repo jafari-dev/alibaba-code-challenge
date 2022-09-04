@@ -10,3 +10,17 @@ export function areStringsMatched(str, search) {
 
   return true;
 }
+
+export function orderObjectsByProperty(array, property, type = "ASC") {
+  if (property === "") return array;
+
+  if (type === "ASC") {
+    return array.sort((a, b) => (
+      a[property] > b[property] ? 1 : -1
+    ));
+  } else {
+    return array.sort((a, b) => (
+      a[property] < b[property] ? 1 : -1
+    ));
+  }
+}
