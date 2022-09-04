@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/prefer-screen-queries */
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { faker } from "@faker-js/faker";
 import CountryCard from ".";
 import { BrowserRouter } from "react-router-dom";
@@ -68,5 +68,26 @@ string as its alt attribute.`, () => {
 
     expect(getByRole("img")).toHaveAttribute("src", flagUrl);
     expect(getByRole("img")).toHaveAttribute("alt", `Flag of ${name}`);
+  });
+
+  test("navigates to a suitable url when its link is clicked.", () => {
+    const name = faker.address.country();
+
+    const { getByRole } = render(
+      <BrowserRouter>
+        <CountryCard
+          name={name}
+          flagUrl={faker.image.imageUrl()}
+          capital={faker.address.city()}
+          population={faker.datatype.number({min: 200000, max: 200000000})}
+          region={faker.random.word()}
+        />
+      </BrowserRouter>
+    );
+
+    expect(window.location.pathname).toBe("/");
+
+    fireEvent.click(getByRole("link"));
+    expect(window.location.pathname).toBe(`/countries/${name.toLowerCase()}`);
   });
 });
