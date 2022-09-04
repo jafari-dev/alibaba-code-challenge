@@ -6,7 +6,9 @@
   font-weight: 600;
   border: none;
   outline: none;
-  box-shadow: 0 0 4px #cccccc;
+  box-shadow: 0 0 4px var(--shadow-color);
+  background-color: var(--secondary-background-color);
+  color: var(--text-color);
   cursor: pointer;
 
   option {

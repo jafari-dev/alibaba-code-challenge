@@ -1,4 +1,3 @@
-import "./App.scss";
 import { useCallback, useEffect, useState } from "react";
 import { Header } from "./components";
 import { HomePage, CountryPage } from "./pages";
@@ -7,10 +6,15 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   const [countries, setCountries] = useState([]);
   const [isDarkThemeOn, setIsDarkThemeOn] = useState(false);
-  const toggleTheme = useCallback(() => {
-    setIsDarkThemeOn((previousState) => !previousState);
-  }, []);
+  const toggleTheme = useCallback(async () => {
+    document.body.classList.toggle("light-theme");
+    document.body.classList.toggle("dark-theme");
+    setIsDarkThemeOn(!isDarkThemeOn);
+  }, [isDarkThemeOn]);
 
+  useEffect(() => {
+    document.body.classList.add("light-theme");
+  }, []);
 
   useEffect(() => {
     async function fetchData() {

@@ -2,7 +2,8 @@
   outline: none;
   background-color: #ffffff;
   border-radius: 4px;
-  box-shadow: 0 0 4px #cccccc;
+  box-shadow: 0 0 4px var(--shadow-color);
+  background-color: var(--secondary-background-color);
   width: 300px;
   display: flex;
   flex-direction: row;
@@ -16,6 +17,8 @@
     font-size: 16px;
     font-weight: 600;
     font-family: "Nunito Sans", sans-serif;
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
 
     &::placeholder {
       color: #aaaaaa;

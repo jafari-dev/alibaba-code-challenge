@@ -5,7 +5,7 @@ import { CountryCard, Search, SelectBox } from "../../components";
 const REGION_FILTER_OPTIONS = [
   "All",
   "Africa",
-  "America",
+  "Americas",
   "Asia",
   "Europe",
   "Oceania",
