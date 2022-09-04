@@ -6,8 +6,9 @@
   padding-bottom: 16px;
 
   img {
-    width: 100%;
-    height: 180px;
+    object-fit: cover;
+    width: 240px;
+    height: 160px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
