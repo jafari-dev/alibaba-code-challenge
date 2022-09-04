@@ -16,7 +16,7 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
-    {/* Try to load the stored them in the client's browser */}
+    // Try to load the stored them in the client's browser
     const storedTheme = window.localStorage.getItem("theme");
 
     if (storedTheme === THEMES.Light || storedTheme === THEMES.Dark) {
@@ -28,7 +28,7 @@ function App() {
       setTheme(THEMES.Light);
     }
 
-    {/* Try to fetch countries informations from the API */}
+    // Try to fetch countries informations from the API
     (async function fetchData() {
       try {
         const response = await fetch(API_URL);

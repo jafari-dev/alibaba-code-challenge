@@ -10,9 +10,12 @@ beforeAll(() => {
 
 describe("SelectBox component", () => {
   test("matches the snapshots.", () => {
-    const options = Array.from({
-      length: faker.datatype.number({min: 3, max: 10})
-    }, () => faker.random.word());
+    const options = Array.from(
+      {
+        length: faker.datatype.number({ min: 3, max: 10 }),
+      },
+      () => faker.random.word()
+    );
 
     const { container } = render(
       <SelectBox
@@ -26,9 +29,12 @@ describe("SelectBox component", () => {
   });
 
   test("sets an empty string as the default value of selectbox.", () => {
-    const options = Array.from({
-      length: faker.datatype.number({min: 3, max: 10})
-    }, () => faker.random.word());
+    const options = Array.from(
+      {
+        length: faker.datatype.number({ min: 3, max: 10 }),
+      },
+      () => faker.random.word()
+    );
 
     const { getByTestId } = render(
       <SelectBox
@@ -43,9 +49,12 @@ describe("SelectBox component", () => {
 
   test("calls the provided `onChange` by changing the selectbox value.", () => {
     const onChange = jest.fn();
-    const options = Array.from({
-      length: faker.datatype.number({min: 3, max: 10})
-    }, () => faker.random.word());
+    const options = Array.from(
+      {
+        length: faker.datatype.number({ min: 3, max: 10 }),
+      },
+      () => faker.random.word()
+    );
 
     const { getByTestId } = render(
       <SelectBox
@@ -56,16 +65,21 @@ describe("SelectBox component", () => {
     );
 
     expect(onChange).not.toBeCalled();
-    
-    fireEvent.change(getByTestId("selectbox", {
-      target: { value: faker.helpers.arrayElement(options) }
-    }));
+
+    fireEvent.change(
+      getByTestId("selectbox", {
+        target: { value: faker.helpers.arrayElement(options) },
+      })
+    );
   });
 
   test("contains a disabled option tag with the provided 'placeholder' prop.", () => {
-    const options = Array.from({
-      length: faker.datatype.number({min: 3, max: 10})
-    }, () => faker.random.word());
+    const options = Array.from(
+      {
+        length: faker.datatype.number({ min: 3, max: 10 }),
+      },
+      () => faker.random.word()
+    );
     const placeholder = faker.random.word();
 
     const { getAllByTestId } = render(
@@ -83,9 +97,12 @@ describe("SelectBox component", () => {
 
   test("contains a list of option tags that they have the", () => {
     const onChange = jest.fn();
-    const options = Array.from({
-      length: faker.datatype.number({min: 3, max: 10})
-    }, () => faker.random.word());
+    const options = Array.from(
+      {
+        length: faker.datatype.number({ min: 3, max: 10 }),
+      },
+      () => faker.random.word()
+    );
 
     const { getAllByTestId } = render(
       <SelectBox
@@ -105,5 +122,5 @@ describe("SelectBox component", () => {
     normalOptions.forEach((option, index) => {
       expect(option).toHaveTextContent(options[index]);
     });
-  })
+  });
 });

@@ -1,4 +1,4 @@
-import { ORDER_FILTERS, THEMES } from "./constants";
+import { ORDER_FILTERS } from "./constants";
 
 export function areStringsMatched(str, search) {
   let lastIndex = 0;
@@ -40,4 +40,3 @@ export function reorderCountriesByFilter(countries, filter) {
     return countries;
   }
 }
-

@@ -2,9 +2,11 @@ import "./styles.scss";
 import { useMemo, useState, memo, useEffect } from "react";
 import { CountryCard, Search, SelectBox } from "../../components";
 import { areStringsMatched, reorderCountriesByFilter } from "../../utils";
-import { ORDER_FILTER_OPTIONS, REGION_FILTER_OPTIONS } from "../../utils/constants";
+import {
+  ORDER_FILTER_OPTIONS,
+  REGION_FILTER_OPTIONS,
+} from "../../utils/constants";
 import { useNavigate } from "react-router-dom";
-
 
 function Home({ countries }) {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
-function CountryCard({name, flagUrl, population, region, capital}) {
+function CountryCard({ name, flagUrl, population, region, capital }) {
   return (
     <div className="country-card">
       <img loading="lazy" src={flagUrl} alt={`Flag of ${name}`} />
@@ -22,7 +22,7 @@ function CountryCard({name, flagUrl, population, region, capital}) {
         <span data-testid="capital">{capital}</span>
       </h4>
     </div>
-  )
+  );
 }
 
 export default memo(CountryCard);

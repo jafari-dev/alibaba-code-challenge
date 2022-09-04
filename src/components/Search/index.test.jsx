@@ -17,7 +17,7 @@ describe("Search component", () => {
   });
 
   test("sets the provided `searchValue` as the input's value attribure.", () => {
-    const searchValue = faker.random.words()
+    const searchValue = faker.random.words();
 
     const { getByRole } = render(
       <Search searchValue={searchValue} onChange={jest.fn()} />
@@ -35,7 +35,7 @@ describe("Search component", () => {
 
     const enteredValue = faker.random.words();
 
-    fireEvent.change(getByRole("textbox"), { target: { value : enteredValue }});
+    fireEvent.change(getByRole("textbox"), { target: { value: enteredValue } });
     expect(onChange).toBeCalledWith(enteredValue);
   });
 });

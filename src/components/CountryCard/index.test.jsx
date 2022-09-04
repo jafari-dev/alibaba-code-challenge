@@ -15,7 +15,7 @@ describe("CountryCard component", () => {
         <CountryCard
           name={faker.address.country()}
           capital={faker.address.city()}
-          population={faker.datatype.number({min: 200000, max: 200000000})}
+          population={faker.datatype.number({ min: 200000, max: 200000000 })}
           region={faker.random.word()}
           flagUrl={faker.image.imageUrl()}
         />
@@ -28,7 +28,7 @@ describe("CountryCard component", () => {
   test("sets the props on the suitable element tags", () => {
     const name = faker.address.country();
     const capital = faker.address.city();
-    const population = faker.datatype.number({min: 200000, max: 200000000});
+    const population = faker.datatype.number({ min: 200000, max: 200000000 });
     const region = faker.random.word();
 
     const { getByTestId } = render(
@@ -60,7 +60,7 @@ string as its alt attribute.`, () => {
           name={name}
           flagUrl={flagUrl}
           capital={faker.address.city()}
-          population={faker.datatype.number({min: 200000, max: 200000000})}
+          population={faker.datatype.number({ min: 200000, max: 200000000 })}
           region={faker.random.word()}
         />
       </BrowserRouter>
@@ -79,7 +79,7 @@ string as its alt attribute.`, () => {
           name={name}
           flagUrl={faker.image.imageUrl()}
           capital={faker.address.city()}
-          population={faker.datatype.number({min: 200000, max: 200000000})}
+          population={faker.datatype.number({ min: 200000, max: 200000000 })}
           region={faker.random.word()}
         />
       </BrowserRouter>

@@ -8,18 +8,17 @@ function Country({ countries }) {
   const urlMatchedCountry = useMemo(() => {
     const decodedPath = window.decodeURIComponent(location.pathname);
     const cleanPath = decodedPath.toLowerCase().replace(/^\/|\/$/g, "");
-    const [majorPath = "", minorPath = "#NONE"] = cleanPath.split("/");
+    const [majorPath, minorPath = "#"] = cleanPath.split("/");
     if (majorPath === "countries") {
       return countries.find(({ name }) => name.toLowerCase() === minorPath);
     }
   }, [location.pathname, countries.length]);
 
   useEffect(() => {
-    async function loadStyles() {
+    // Lazy (dynamic) styles loading for this page
+    (async function loadStyles() {
       await import("./styles.scss");
-    }
-
-    loadStyles();
+    })();
   }, []);
 
   if (urlMatchedCountry == null) {
