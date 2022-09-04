@@ -1,5 +1,4 @@
-import "./styles.scss";
-import { memo, useMemo } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { ArrowLeft } from "../../assets";
 import { Link, useLocation } from "react-router-dom";
 
@@ -14,6 +13,14 @@ function Country({ countries }) {
       return countries.find(({ name }) => name.toLowerCase() === minorPath);
     }
   }, [location.pathname, countries.length]);
+
+  useEffect(() => {
+    async function loadStyles() {
+      await import("./styles.scss");
+    }
+
+    loadStyles();
+  }, []);
 
   if (urlMatchedCountry == null) {
     return <div>No country exist with this name!</div>;
