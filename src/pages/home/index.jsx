@@ -1,6 +1,7 @@
 import "./styles.scss";
 import { useMemo, useState, memo } from "react";
 import { CountryCard, Search, SelectBox } from "../../components";
+import { areStringsMatched } from "../../utils/helpers";
 
 const REGION_FILTER_OPTIONS = [
   "All",
@@ -17,16 +18,13 @@ function Home({ countries }) {
 
   const shownCountries = useMemo(() => {
     return countries.filter((country) => {
-      const allRegionsFilters = ["", "All"];
-      const areRegionsMatched = allRegionsFilters.includes(selectedRegion)
-        ? true
-        : country.region === selectedRegion;
-      const areNameAndSearchMatched = country.name
-        .toUpperCase()
-        .includes(searchedValue.toUpperCase());
-
-      if (areRegionsMatched && areNameAndSearchMatched) return true;
-      else return false;
+      if (
+        (["", "All"].includes(selectedRegion) ||
+        country.region === selectedRegion) &&
+        areStringsMatched(country.name, searchedValue)
+      ) return true;
+      
+      return false;
     });
   }, [countries, searchedValue, selectedRegion]);
 
