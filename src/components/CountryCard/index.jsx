@@ -5,7 +5,7 @@ import "./styles.scss";
 function CountryCard({name, flagUrl, population, region, capital}) {
   return (
     <div className="country-card">
-      <img src={flagUrl} alt={`Flag of ${name}`} />
+      <img loading="lazy" src={flagUrl} alt={`Flag of ${name}`} />
       <Link to={`/countries/${name.toLowerCase()}`}>
         <h3 data-testid="name">{name}</h3>
       </Link>

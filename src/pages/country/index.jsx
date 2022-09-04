@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function Country({ countries }) {
   const location = useLocation();
-  
+
   const urlMatchedCountry = useMemo(() => {
     const decodedPath = window.decodeURIComponent(location.pathname);
     const cleanPath = decodedPath.toLowerCase().replace(/^\/|\/$/g, "");
@@ -23,7 +23,15 @@ function Country({ countries }) {
   }, []);
 
   if (urlMatchedCountry == null) {
-    return <div>No country exist with this name!</div>;
+    return (
+      <div className="no-country">
+        <Link to="/" className="back-button">
+          <ArrowLeft />
+          <span>Back</span>
+        </Link>
+        No country exist with this name!
+      </div>
+    );
   } else {
     const {
       name,
@@ -66,8 +74,8 @@ function Country({ countries }) {
                 <span>Currencies:</span>
                 <span>
                   {currencies.map((currency) => (
-                  <span key={currency.name}>{currency.name}</span>
-                ))}
+                    <span key={currency.name}>{currency.name}</span>
+                  ))}
                 </span>
               </li>
               <li>
@@ -78,8 +86,8 @@ function Country({ countries }) {
                 <span>Languages:</span>
                 <span>
                   {languages.map((language) => (
-                  <span key={language.name}>{language.name}</span>
-                ))}
+                    <span key={language.name}>{language.name}</span>
+                  ))}
                 </span>
               </li>
               <li>
@@ -94,11 +102,15 @@ function Country({ countries }) {
             <div className="borders">
               <span>Border Countries:</span>
               {borders?.map((border) => {
-                const countryName = countries.find((country) => country.alpha3Code === border).name;
+                const countryName = countries.find(
+                  (country) => country.alpha3Code === border
+                ).name;
 
                 return (
-                  <Link key={border} to={`/countries/${countryName}`}>{countryName}</Link>
-                )
+                  <Link key={border} to={`/countries/${countryName}`}>
+                    {countryName}
+                  </Link>
+                );
               })}
             </div>
           </article>
