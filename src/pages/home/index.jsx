@@ -1,7 +1,8 @@
 import "./styles.scss";
-import { useMemo, useState, memo } from "react";
+import { useMemo, useState, memo, useEffect } from "react";
 import { CountryCard, Search, SelectBox } from "../../components";
 import { areStringsMatched } from "../../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 const REGION_FILTER_OPTIONS = [
   "All",
@@ -13,8 +14,22 @@ const REGION_FILTER_OPTIONS = [
 ];
 
 function Home({ countries }) {
+  const navigate = useNavigate();
   const [searchedValue, setSearchedValue] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
+
+  useEffect(() => {
+    const region =selectedRegion
+      ? `region=${selectedRegion ? selectedRegion : "All"}`
+      : "";
+
+    const country = searchedValue ? `search=${searchedValue}` : "";
+    const filters = region === "" || country === ""
+      ? region + country
+      : region + "&" + country;
+
+    navigate(`${filters ? `?${filters}` : ""}`, { replace: true });
+  }, [searchedValue, selectedRegion]);
 
   const shownCountries = useMemo(() => {
     return countries.filter((country) => {
