@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# AliBaba Code Challenge (Where in the world)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repositry relates to the AliBaba company code challenge before the interview.
 
-## Available Scripts
+You can visit the online deployed site here:
 
-In the project directory, you can run:
 
-### `npm start`
+[Online Deployed Version](https://alibaba-code-challenge.vercel.app/).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I tried to do the best practices of React on the codebase and generate clean, readable, reusable and maintainable codes. Also I tried to avoid using and 3rd party library as more as possible. For example I styled elements using pure scss and not UI libraries such as AntDesign, Material UI and ... .
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Implemented features
 
-### `npm run build`
+### All main and normal features are implemented.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Implemented bonuses
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These are the bonuses that I did on my project:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Toggle the color scheme between light and dark mode without using any 3rd party libraries
+* Searching using the keywords Grmany or Grmny should also work
+* Add sort functionality for both Population and Country Name
+* Make sure styles are loaded whenever they're really needed. e.g., The styles for the details page don't load on the homepage
+* Make sure the ratio for the country flags is 4:3 or any other ratio you find suitable
+* Add unit tests for components
+* Store the filters in the URL query strings and sync it with the component filter object
+* Add lazy loading for country images
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tests
+All the components have their own tests. Tests are writen using Jest and ReactTestingLibray. You can run tests using `npm run test` command.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Server Side Rendering
+We haven't any SSR in this project, because I implemented this project using React and its a library that is focused on CSR not SSR. I considered that the project should be implemented with exactly the same mentioned technologies (ReactJS / VueJS) so I didn't use NextJS to implementing SSR, But I'm fimilar and experienced in SSG, SSR and ISR. 
